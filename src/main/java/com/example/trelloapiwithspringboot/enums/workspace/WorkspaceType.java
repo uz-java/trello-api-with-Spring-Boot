@@ -13,5 +13,14 @@ public enum WorkspaceType {
     SMALL_BUSINESS,
     EDUCATION,
     HUMAN_RESOURCES,
-    OTHER
+    OTHER;
+
+    public WorkspaceType getWorkspaceType(String type){
+        for (WorkspaceType workspaceType : values()) {
+            if (workspaceType.name().equalsIgnoreCase(type)){
+                return workspaceType;
+            }
+        }
+        return OTHER;
+    }
 }
