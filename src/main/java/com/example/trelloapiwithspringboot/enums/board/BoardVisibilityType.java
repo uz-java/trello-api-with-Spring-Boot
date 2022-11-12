@@ -6,4 +6,7 @@ package com.example.trelloapiwithspringboot.enums.board;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 public enum BoardVisibilityType {
+    PRIVATE,
+    WORKSPACE_MEMBERS,
+    PUBLIC
 }

@@ -6,4 +6,6 @@ package com.example.trelloapiwithspringboot.enums.auth;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 public enum UserStatus {
+    ACTIVE,
+    IN_ACTIVE
 }

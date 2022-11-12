@@ -6,4 +6,12 @@ package com.example.trelloapiwithspringboot.enums.workspace;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 public enum WorkspaceType {
+    OPERATIONS,
+    SALES_CRM,
+    MARKETING,
+    ENGINEERING_IT,
+    SMALL_BUSINESS,
+    EDUCATION,
+    HUMAN_RESOURCES,
+    OTHER
 }
