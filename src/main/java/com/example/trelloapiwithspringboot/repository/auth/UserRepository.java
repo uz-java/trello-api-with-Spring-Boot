@@ -1,9 +1,12 @@
 package com.example.trelloapiwithspringboot.repository.auth;
 
+import com.example.trelloapiwithspringboot.domains.auth.AuthUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  * @author "Tojaliyev Asliddin"
  * @since 12/11/22 23:56 (Saturday)
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<AuthUser,Long> {
 }
