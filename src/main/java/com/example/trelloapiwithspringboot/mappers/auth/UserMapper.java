@@ -1,5 +1,7 @@
 package com.example.trelloapiwithspringboot.mappers.auth;
 
+import com.example.trelloapiwithspringboot.domains.auth.AuthUser;
+import com.example.trelloapiwithspringboot.dtos.auth.UserDTO;
 import org.mapstruct.Mapper;
 
 /**
@@ -9,4 +11,5 @@ import org.mapstruct.Mapper;
  */
 @Mapper(componentModel = "spring")
 public interface UserMapper {
+    UserDTO fromUser(AuthUser authUser);
 }
