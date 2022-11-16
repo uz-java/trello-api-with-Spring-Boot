@@ -3,7 +3,6 @@ package com.example.trelloapiwithspringboot.domains.board;
 import com.example.trelloapiwithspringboot.domains.workspace.Workspace;
 import com.example.trelloapiwithspringboot.enums.board.BoardVisibilityType;
 import lombok.*;
-import org.glassfish.hk2.api.Visibility;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -32,12 +31,12 @@ public class Board {
 
     @Builder.Default
     @OneToMany(mappedBy = "board")
-    private Set<BoardColumn> boardColumns=new HashSet<>();
+    private Set<BoardColumn> boardColumns = new HashSet<>();
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workspace_id",nullable = false,referencedColumnName = "id")
+    @JoinColumn(name = "workspace_id", nullable = false, referencedColumnName = "id")
     private Workspace workspace;
 
     @Builder.Default
     @Column(columnDefinition = "bool default false")
-    private Boolean isDeleted=false;
+    private Boolean isDeleted = false;
 }
