@@ -2,6 +2,7 @@ package com.example.trelloapiwithspringboot.service.boardColumn;
 
 import com.example.trelloapiwithspringboot.dtos.boardColumn.BoardColumnCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.boardColumn.BoardColumnDTO;
+import com.example.trelloapiwithspringboot.dtos.boardColumn.BoardColumnOrderChangeDTO;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -10,4 +11,8 @@ import com.example.trelloapiwithspringboot.dtos.boardColumn.BoardColumnDTO;
  */
 public interface BoardColumnService {
     BoardColumnDTO save(BoardColumnCreateDTO dto);
+
+    BoardColumnDTO changeOrder(BoardColumnOrderChangeDTO dto);
+
+    Void deleteColumn(Long id);
 }
