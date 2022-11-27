@@ -19,4 +19,6 @@ public interface CardService {
     CardDTO addComment(CommentCreateDTO dto);
 
     CardDTO changeColumn(CardChangeColumnDTO dto);
+
+    Void deleteCard(Long id);
 }

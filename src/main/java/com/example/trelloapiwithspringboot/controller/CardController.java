@@ -48,5 +48,8 @@ public class CardController {
         CardDTO cardDTO=cardService.changeColumn(dto);
         return new ResponseEntity<>(cardDTO,HttpStatus.OK);
     }
-
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Void> deleteCard(@PathVariable Long id){
+        return new ResponseEntity<>(cardService.deleteCard(id),HttpStatus.NO_CONTENT);
+    }
 }
