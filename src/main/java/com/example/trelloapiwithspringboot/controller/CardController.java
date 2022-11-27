@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.controller;
 
+import com.example.trelloapiwithspringboot.dtos.card.CardAddMemberDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardDTO;
 import com.example.trelloapiwithspringboot.service.card.CardService;
@@ -25,10 +26,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class CardController {
     private final CardService cardService;
 
-    @PostMapping(value = "/create",produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<CardDTO> createBoardColumn(@RequestBody CardCreateDTO dto){
-        CardDTO cardDTO=cardService.save(dto);
+    @PostMapping(value = "/create", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<CardDTO> createBoardColumn(@RequestBody CardCreateDTO dto) {
+        CardDTO cardDTO = cardService.save(dto);
         return new ResponseEntity<>(cardDTO, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addMember")
+    public ResponseEntity<CardDTO> addMember(@RequestBody CardAddMemberDTO dto) {
+        CardDTO cardDTO = cardService.addMember(dto);
+        return new ResponseEntity<>(cardDTO, HttpStatus.OK);
     }
 
 }

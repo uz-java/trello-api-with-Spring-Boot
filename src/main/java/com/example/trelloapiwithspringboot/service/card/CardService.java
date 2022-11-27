@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.service.card;
 
+import com.example.trelloapiwithspringboot.dtos.card.CardAddMemberDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardDTO;
 
@@ -10,4 +11,6 @@ import com.example.trelloapiwithspringboot.dtos.card.CardDTO;
  */
 public interface CardService {
     CardDTO save(CardCreateDTO dto);
+
+    CardDTO addMember(CardAddMemberDTO dto);
 }
