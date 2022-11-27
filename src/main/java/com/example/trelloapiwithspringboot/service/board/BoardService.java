@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.service.board;
 
+import com.example.trelloapiwithspringboot.dtos.board.BoardChangeVisibilityDTO;
 import com.example.trelloapiwithspringboot.dtos.board.BoardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.board.BoardDTO;
 
@@ -12,4 +13,6 @@ public interface BoardService {
     BoardDTO save(BoardCreateDTO dto);
 
     BoardDTO getBoard(Long id);
+
+    Void changeVisibility(BoardChangeVisibilityDTO dto);
 }

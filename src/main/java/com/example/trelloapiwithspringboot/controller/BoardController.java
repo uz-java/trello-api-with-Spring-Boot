@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.controller;
 
+import com.example.trelloapiwithspringboot.dtos.board.BoardChangeVisibilityDTO;
 import com.example.trelloapiwithspringboot.dtos.board.BoardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.board.BoardDTO;
 import com.example.trelloapiwithspringboot.service.board.BoardService;
@@ -9,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -33,4 +36,10 @@ public class BoardController {
         BoardDTO boardDTO=boardService.getBoard(id);
         return ResponseEntity.ok(boardDTO);
     }
+
+    @PatchMapping(value = "/changeVisibility")
+    public ResponseEntity<Void> changeVisibility(@Valid @RequestBody BoardChangeVisibilityDTO dto){
+        return new ResponseEntity<>(boardService.changeVisibility(dto),HttpStatus.NO_CONTENT);
+    }
+
 }
