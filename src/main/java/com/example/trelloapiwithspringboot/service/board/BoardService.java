@@ -15,4 +15,6 @@ public interface BoardService {
     BoardDTO getBoard(Long id);
 
     Void changeVisibility(BoardChangeVisibilityDTO dto);
+
+    Void deleteBoard(Long id);
 }
