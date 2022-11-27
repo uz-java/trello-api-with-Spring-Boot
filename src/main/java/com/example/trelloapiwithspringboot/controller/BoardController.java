@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -31,4 +28,9 @@ public class BoardController {
         return new ResponseEntity<>(boardDTO, HttpStatus.CREATED);
     }
 
+    @GetMapping(value = "/get/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<BoardDTO> getBoard(@PathVariable Long id){
+        BoardDTO boardDTO=boardService.getBoard(id);
+        return ResponseEntity.ok(boardDTO);
+    }
 }

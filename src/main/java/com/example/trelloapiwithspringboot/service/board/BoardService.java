@@ -10,4 +10,6 @@ import com.example.trelloapiwithspringboot.dtos.board.BoardDTO;
  */
 public interface BoardService {
     BoardDTO save(BoardCreateDTO dto);
+
+    BoardDTO getBoard(Long id);
 }
