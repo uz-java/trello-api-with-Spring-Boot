@@ -34,7 +34,6 @@ public class BoardColumnController {
 
     @DeleteMapping(value = "/deleteColumn/{id}")
     public ResponseEntity<Void> deleteColumn(@PathVariable Long id) {
-        boardColumnService.deleteColumn(id);
         return new ResponseEntity<>(boardColumnService.deleteColumn(id),HttpStatus.NO_CONTENT);
     }
 }
