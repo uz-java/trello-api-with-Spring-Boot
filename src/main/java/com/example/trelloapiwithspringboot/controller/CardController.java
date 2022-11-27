@@ -3,6 +3,7 @@ package com.example.trelloapiwithspringboot.controller;
 import com.example.trelloapiwithspringboot.dtos.card.CardAddMemberDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardDTO;
+import com.example.trelloapiwithspringboot.dtos.comment.CommentCreateDTO;
 import com.example.trelloapiwithspringboot.service.card.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,12 @@ public class CardController {
     public ResponseEntity<CardDTO> addMember(@RequestBody CardAddMemberDTO dto) {
         CardDTO cardDTO = cardService.addMember(dto);
         return new ResponseEntity<>(cardDTO, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/comment/create")
+    public ResponseEntity<CardDTO> addCommend(@RequestBody CommentCreateDTO dto){
+        CardDTO cardDTO=cardService.addComment(dto);
+        return new ResponseEntity<>(cardDTO,HttpStatus.OK);
     }
 
 }
