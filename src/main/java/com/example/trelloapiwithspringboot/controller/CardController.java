@@ -1,6 +1,7 @@
 package com.example.trelloapiwithspringboot.controller;
 
 import com.example.trelloapiwithspringboot.dtos.card.CardAddMemberDTO;
+import com.example.trelloapiwithspringboot.dtos.card.CardChangeColumnDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardDTO;
 import com.example.trelloapiwithspringboot.dtos.comment.CommentCreateDTO;
@@ -10,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -42,6 +40,12 @@ public class CardController {
     @PostMapping(value = "/comment/create")
     public ResponseEntity<CardDTO> addCommend(@RequestBody CommentCreateDTO dto){
         CardDTO cardDTO=cardService.addComment(dto);
+        return new ResponseEntity<>(cardDTO,HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/changeColumn")
+    public ResponseEntity<CardDTO> changeColumn(@RequestBody CardChangeColumnDTO dto){
+        CardDTO cardDTO=cardService.changeColumn(dto);
         return new ResponseEntity<>(cardDTO,HttpStatus.OK);
     }
 

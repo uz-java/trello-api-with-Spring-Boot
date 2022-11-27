@@ -1,6 +1,7 @@
 package com.example.trelloapiwithspringboot.service.card;
 
 import com.example.trelloapiwithspringboot.dtos.card.CardAddMemberDTO;
+import com.example.trelloapiwithspringboot.dtos.card.CardChangeColumnDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.card.CardDTO;
 import com.example.trelloapiwithspringboot.dtos.comment.CommentCreateDTO;
@@ -16,4 +17,6 @@ public interface CardService {
     CardDTO addMember(CardAddMemberDTO dto);
 
     CardDTO addComment(CommentCreateDTO dto);
+
+    CardDTO changeColumn(CardChangeColumnDTO dto);
 }
