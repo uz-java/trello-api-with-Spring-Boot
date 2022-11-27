@@ -2,6 +2,7 @@ package com.example.trelloapiwithspringboot.controller;
 
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceDTO;
+import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceMemberDTO;
 import com.example.trelloapiwithspringboot.service.workspace.WorkspaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,8 +37,14 @@ public class WorkspaceController {
         return new ResponseEntity<>(workspaceDTOS,HttpStatus.OK);
     }
     @GetMapping(value = "/get/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<WorkspaceDTO> getWorkspace(@PathVariable Long id){
+    public ResponseEntity<WorkspaceDTO> getWorkspace(@PathVariable Long id) throws IllegalAccessException{
         WorkspaceDTO workspaceDTO=workspaceService.getWorkspace(id);
         return new ResponseEntity<>(workspaceDTO,HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/addMember")
+    public ResponseEntity<Void> addMember(@Valid @RequestBody WorkspaceMemberDTO dto){
+        workspaceService.addMember(dto);
+        return ResponseEntity.noContent().build();
     }
 }

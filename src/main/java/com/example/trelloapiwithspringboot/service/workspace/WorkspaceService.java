@@ -2,6 +2,7 @@ package com.example.trelloapiwithspringboot.service.workspace;
 
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceDTO;
+import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceMemberDTO;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface WorkspaceService {
     List<WorkspaceDTO> getAll();
 
     WorkspaceDTO getWorkspace(Long id);
+
+    Void addMember(WorkspaceMemberDTO dto);
 }
