@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.controller;
 
+import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceChangeVisibilityDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceMemberDTO;
@@ -45,6 +46,20 @@ public class WorkspaceController {
     @PatchMapping(value = "/addMember")
     public ResponseEntity<Void> addMember(@Valid @RequestBody WorkspaceMemberDTO dto){
         workspaceService.addMember(dto);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/removeMember")
+    public ResponseEntity<Void> removeMember(
+            @Valid @RequestBody WorkspaceMemberDTO dto) {
+        workspaceService.removeMember(dto);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/changeVisibility")
+    public ResponseEntity<Void> changeVisibility(
+            @Valid @RequestBody WorkspaceChangeVisibilityDTO dto) {
+        workspaceService.changeVisibility(dto);
         return ResponseEntity.noContent().build();
     }
 }

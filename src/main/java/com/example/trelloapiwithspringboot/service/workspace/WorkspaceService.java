@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.service.workspace;
 
+import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceChangeVisibilityDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceMemberDTO;
@@ -19,4 +20,8 @@ public interface WorkspaceService {
     WorkspaceDTO getWorkspace(Long id);
 
     Void addMember(WorkspaceMemberDTO dto);
+
+    Void removeMember(WorkspaceMemberDTO dto);
+
+    Void changeVisibility(WorkspaceChangeVisibilityDTO dto);
 }
