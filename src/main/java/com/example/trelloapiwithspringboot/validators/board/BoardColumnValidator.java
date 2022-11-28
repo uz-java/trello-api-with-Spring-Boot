@@ -56,7 +56,7 @@ public class BoardColumnValidator extends AbstractValidator<BoardColumnCreateDTO
 
     }
 
-    protected BoardColumn getBoardColumn(Long id) {
+    public BoardColumn getBoardColumn(Long id) {
         BoardColumn boardColumn = boardColumnRepository.findById(id).
                 orElseThrow(() -> new GenericNotFoundException("Board column not found by id: %s".formatted(id)));
         if (boardColumn.getIsDeleted())
