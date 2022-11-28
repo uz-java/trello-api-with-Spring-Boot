@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 /**
  * @author "Tojaliyev Asliddin"
  * @since 13/11/22 00:16 (Sunday)
@@ -53,7 +55,19 @@ public class BoardColumnServiceImpl implements BoardColumnService {
     }
 
     @Override
-    public Void deleteColumn(Long id) {
-        return null;
+    public void deleteColumn(Long id) {
+        boardColumnValidator.validateOnDelete(id);
+        BoardColumn boardColumn = boardColumnRepository.findById(id)
+                .orElseThrow(() -> new GenericNotFoundException(
+                        "Board column not found by id: " + id
+                ));
+        Set<BoardColumn> boardColumns = boardColumn.getBoard()
+                .getBoardColumns();
+        boardColumns.stream()
+                .filter(bc -> bc.getOrder() > boardColumn.getOrder())
+                .forEach(nbc -> nbc.setOrder(nbc.getOrder() - 1));
+        boardColumns.remove(boardColumn);
+        boardColumn.setIsDeleted(true);
+        boardColumnRepository.save(boardColumn);
     }
 }

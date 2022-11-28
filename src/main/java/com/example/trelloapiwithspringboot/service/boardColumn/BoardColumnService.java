@@ -16,5 +16,5 @@ public interface BoardColumnService {
 
     BoardColumnDTO changeOrder(BoardColumnOrderChangeDTO dto);
 
-    Void deleteColumn(Long id);
+    void deleteColumn(Long id);
 }
