@@ -8,8 +8,10 @@ import com.example.trelloapiwithspringboot.dtos.auth.UserDTO;
 import com.example.trelloapiwithspringboot.dtos.jwt.JwtResponseDTO;
 import com.example.trelloapiwithspringboot.dtos.jwt.RefreshTokenRequest;
 import com.example.trelloapiwithspringboot.exceptions.UserNotFoundException;
+import com.example.trelloapiwithspringboot.exceptions.ValidationException;
 import com.example.trelloapiwithspringboot.mappers.auth.UserMapper;
 import com.example.trelloapiwithspringboot.repository.auth.UserRepository;
+import com.example.trelloapiwithspringboot.service.token.RefreshTokenService;
 import com.example.trelloapiwithspringboot.utils.jwt.JwtUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -53,12 +55,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDTO register(UserCreateDTO dto) {
-        return null;
+        AuthUser authUser = userRepository.save(AuthUser.builder()
+                .email(dto.email())
+                .password(passwordEncoder.encode(dto.password()))
+                .build());
+        return userMapper.fromUser(authUser);
     }
 
     @Override
     public JwtResponseDTO refreshToken(RefreshTokenRequest request) {
-        return null;
+        String token = request.token();
+        RefreshTokenService refreshTokenService = JwtUtils.refreshTokenService;
+        if (!refreshTokenService.isValid(token))
+            throw new ValidationException("Refresh token is invalid");
+        String username = refreshTokenService.getSubject(token);
+        UserDetails userDetails = loadUserByUsername(username);
+        String accessToken = JwtUtils.accessTokenService.generateToken(userDetails);
+        return new JwtResponseDTO(accessToken, request.token(), "Bearer");
     }
 
 
