@@ -39,11 +39,13 @@ public class BoardController {
 
     @PatchMapping(value = "/changeVisibility")
     public ResponseEntity<Void> changeVisibility(@Valid @RequestBody BoardChangeVisibilityDTO dto){
-        return new ResponseEntity<>(boardService.changeVisibility(dto),HttpStatus.NO_CONTENT);
+        boardService.changeVisibility(dto);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Void> deleteBoard(@PathVariable Long id){
-        return new ResponseEntity<>(boardService.deleteBoard(id),HttpStatus.NO_CONTENT);
+        boardService.deleteBoard(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
