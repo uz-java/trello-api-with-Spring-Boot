@@ -31,11 +31,10 @@ public class RefreshTokenService extends AbstractTokenService implements TokenSe
     public Boolean isValid(String token) {
         return super.isTokenValid(token, refreshTokenSecret);
     }
+
     public String getSubject(String token) {
         return super.getSubject(token, refreshTokenSecret);
     }
-
-
 
     public String jwt(@NonNull String subject) {
         return super.jwt(subject, this.refreshTokenSecret, this.amountToAdd, this.unit);

@@ -19,9 +19,9 @@ public interface WorkspaceService {
 
     WorkspaceDTO getWorkspace(Long id);
 
-    Void addMember(WorkspaceMemberDTO dto);
+    void addMember(WorkspaceMemberDTO dto);
 
-    Void removeMember(WorkspaceMemberDTO dto);
+    void removeMember(WorkspaceMemberDTO dto);
 
-    Void changeVisibility(WorkspaceChangeVisibilityDTO dto);
+    void changeVisibility(WorkspaceChangeVisibilityDTO dto);
 }
