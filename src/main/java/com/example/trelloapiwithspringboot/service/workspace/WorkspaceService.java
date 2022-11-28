@@ -17,7 +17,7 @@ public interface WorkspaceService {
 
     List<WorkspaceDTO> getAll();
 
-    WorkspaceDTO getWorkspace(Long id);
+    WorkspaceDTO getWorkspace(Long id) throws IllegalAccessException;
 
     void addMember(WorkspaceMemberDTO dto);
 

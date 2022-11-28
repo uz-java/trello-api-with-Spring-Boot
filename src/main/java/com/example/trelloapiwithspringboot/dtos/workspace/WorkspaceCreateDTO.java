@@ -17,6 +17,6 @@ import lombok.*;
 public class WorkspaceCreateDTO implements BaseGenericDTO {
     private String name;
     private Long userId;
-    private WorkspaceType workspaceType;
+    private WorkspaceType type;
     private String description;
 }
