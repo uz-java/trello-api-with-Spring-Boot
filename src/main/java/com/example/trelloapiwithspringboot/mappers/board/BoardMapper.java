@@ -13,7 +13,10 @@ import org.mapstruct.Mapping;
  * @since 12/11/22 15:32 (Saturday)
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
-@Mapper(componentModel = "spring", uses = {CommentMapper.class, BoardColumnMapper.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring",
+        uses = {CommentMapper.class,
+        BoardColumnMapper.class},
+        injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface BoardMapper {
     Board fromCreateDTO(BoardCreateDTO dto);
     @Mapping(target = "workspaceId",source = "workspace.id")

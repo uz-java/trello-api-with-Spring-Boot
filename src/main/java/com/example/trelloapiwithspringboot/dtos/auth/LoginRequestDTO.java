@@ -6,5 +6,4 @@ package com.example.trelloapiwithspringboot.dtos.auth;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 public record LoginRequestDTO(String email,String password) {
-    
 }

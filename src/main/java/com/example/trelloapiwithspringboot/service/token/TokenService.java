@@ -1,6 +1,7 @@
 package com.example.trelloapiwithspringboot.service.token;
 
 import com.example.trelloapiwithspringboot.configs.security.UserDetails;
+import org.springframework.stereotype.Service;
 
 /**
  * @author "Tojaliyev Asliddin"

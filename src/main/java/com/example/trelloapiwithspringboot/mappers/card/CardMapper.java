@@ -13,7 +13,9 @@ import org.mapstruct.Mapping;
  * @since 12/11/22 15:33 (Saturday)
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
-@Mapper(componentModel = "spring", uses = {CommentMapper.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring",
+        uses = {CommentMapper.class},
+        injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface CardMapper {
     @Mapping(target = "boardColumnId",source = "boardColumn.id")
     CardDTO fromCard(Card card);

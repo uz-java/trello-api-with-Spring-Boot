@@ -4,6 +4,7 @@ import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceChangeVisibil
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceDTO;
 import com.example.trelloapiwithspringboot.dtos.workspace.WorkspaceMemberDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @since 13/11/22 00:19 (Sunday)
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
+@Service
 public interface WorkspaceService {
     WorkspaceDTO save(WorkspaceCreateDTO dto);
 

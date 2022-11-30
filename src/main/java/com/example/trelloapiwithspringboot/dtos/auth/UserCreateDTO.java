@@ -8,5 +8,4 @@ import com.example.trelloapiwithspringboot.dtos.base.BaseGenericDTO;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 public record UserCreateDTO(String email, String password) implements BaseGenericDTO {
-
 }
