@@ -1,8 +1,14 @@
 package com.example.trelloapiwithspringboot.configs.security.filters;
 
+import com.example.trelloapiwithspringboot.configs.security.UserDetails;
 import com.example.trelloapiwithspringboot.service.auth.UserService;
+import com.example.trelloapiwithspringboot.service.token.AccessTokenService;
+import com.example.trelloapiwithspringboot.utils.jwt.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -32,7 +38,23 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
+        String requestURL=request.getRequestURI();
+        if (!isOpenUrl.apply(requestURL)){
+            try {
+                String token=parseJwt(request);
+                final AccessTokenService accessTokenService = JwtUtils.accessTokenService;
+                if (accessTokenService.isValid(token)){
+                    String email = accessTokenService.getSubject(token);
+                    UserDetails userDetails = userService.loadUserByUsername(email);
+                    UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        filterChain.doFilter(request,response);
     }
 
     private String parseJwt(HttpServletRequest request){

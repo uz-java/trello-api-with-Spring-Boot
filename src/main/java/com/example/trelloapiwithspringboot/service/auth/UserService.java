@@ -1,5 +1,6 @@
 package com.example.trelloapiwithspringboot.service.auth;
 
+import com.example.trelloapiwithspringboot.configs.security.UserDetails;
 import com.example.trelloapiwithspringboot.dtos.auth.LoginRequestDTO;
 import com.example.trelloapiwithspringboot.dtos.auth.UserCreateDTO;
 import com.example.trelloapiwithspringboot.dtos.auth.UserDTO;
@@ -19,4 +20,6 @@ public interface UserService {
     UserDTO register(UserCreateDTO dto);
 
     JwtResponseDTO refreshToken(RefreshTokenRequest request);
+
+    UserDetails loadUserByUsername(String email);
 }
