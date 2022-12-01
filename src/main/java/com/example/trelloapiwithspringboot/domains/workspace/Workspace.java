@@ -24,8 +24,10 @@ public class Workspace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String name;
+
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, referencedColumnName = "id", name = "created_by")
     private AuthUser createdBy;

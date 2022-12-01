@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
  * @since 13/11/22 00:17 (Sunday)
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
+@Service
 public interface TokenService {
     String generateToken(UserDetails userDetails);
 

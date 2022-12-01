@@ -9,7 +9,6 @@ import lombok.*;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Builder

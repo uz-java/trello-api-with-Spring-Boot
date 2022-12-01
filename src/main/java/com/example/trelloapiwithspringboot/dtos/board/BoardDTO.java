@@ -21,5 +21,5 @@ public class BoardDTO {
     private String name;
     private BoardVisibilityType visibilityType;
     private Long workspaceId;
-    private Set<BoardColumnDTO> boardColumnDTOS;
+    private Set<BoardColumnDTO> boardColumns;
 }

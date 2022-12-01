@@ -21,9 +21,9 @@ public class WorkspaceDTO {
     private Long id;
     private String name;
     private Long createdBy;
-    private WorkspaceType workspaceType;
+    private WorkspaceType type;
     private String description;
     private Boolean isVisible;
-    private Set<BoardDTO> boardDTOS;
+    private Set<BoardDTO> boards;
     private Set<UserDTO> members;
 }

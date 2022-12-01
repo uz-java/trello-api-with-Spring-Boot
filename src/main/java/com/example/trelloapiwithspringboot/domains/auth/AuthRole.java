@@ -25,11 +25,11 @@ public class AuthRole implements GrantedAuthority {
     private String name;
     @Column(nullable = false,unique = true)
     private String code;
-    @ManyToMany(cascade = CascadeType.MERGE)
+/*    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "role_perm",
     joinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "per_id",referencedColumnName = "id"))
-    private Set<AuthPermission> permissions;
+    private Set<AuthPermission> permissions;*/
     @Override
     public String getAuthority() {
         return "ROLE_"+this.code;

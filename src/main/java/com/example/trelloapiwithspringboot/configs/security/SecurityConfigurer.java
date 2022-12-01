@@ -33,15 +33,16 @@ public class SecurityConfigurer {
                 .antMatchers("/auth/login",
                         "/auth/register",
                         "/swagger-ui/**",
-                        "/api-docs/***")
+                        "/api-docs/**")
                 .permitAll()
-                .anyRequest()
-                .authenticated());
+                .anyRequest().authenticated()
+        );
         http.sessionManagement(httpSecuritySessionManagementConfigurer ->
                 httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(new JwtFilter(userService), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();

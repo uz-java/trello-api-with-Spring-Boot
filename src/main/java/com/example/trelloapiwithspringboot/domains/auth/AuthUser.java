@@ -35,9 +35,11 @@ public class AuthUser {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private Set<AuthRole> roles=new HashSet<>();
+
     @Builder.Default
     @Enumerated(EnumType.STRING)
     private UserStatus status=UserStatus.ACTIVE;
+
     @Builder.Default
     private Boolean isActive=true;
 

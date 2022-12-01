@@ -15,12 +15,22 @@ import org.springframework.context.annotation.Configuration;
  * trello-api-with-Spring-Boot/IntelliJ IDEA
  */
 @Configuration
-@OpenAPIDefinition(info = @Info(title = "First Step Forward API",version = "v1",
-        description = "This API just for learning purposes",
-        contact = @Contact(name = "Asliddin",url = "https://pdp.uz",email = "asliddintojaliyev88@gmail.com"),
-        license = @License(name = "Apache Foundation",url = "https://apache.org")),security = {@SecurityRequirement(name = "Bearer")})
-@SecurityScheme(name = "Bearer",
+@OpenAPIDefinition(
+        info = @Info(title = "First Step Forward API", version = "v1",
+                description = "This API just for learning purposes",
+                contact = @Contact(name = "Asliddin", url = "https://pdp.uz", email = "john.lgd65@gmail.com"),
+                license = @License(name = "Apache Foundation", url = "http://apache.org")
+        ),
+        security = {
+                @SecurityRequirement(
+                        name = "Bearer"
+                )
+        }
+)
+@SecurityScheme(
+        name = "Bearer",
         type = SecuritySchemeType.HTTP,
-        bearerFormat = "JWT",scheme = "Bearer")
+        bearerFormat = "JWT",
+        scheme = "Bearer")
 public class OpenAPIConfigurer {
 }

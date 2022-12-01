@@ -22,5 +22,5 @@ public class CardDTO {
     private String name;
     private Set<UserDTO> members;
     private Long boardColumnId;
-    private List<CommentDTO> commentDTOS;
+    private List<CommentDTO> comments;
 }

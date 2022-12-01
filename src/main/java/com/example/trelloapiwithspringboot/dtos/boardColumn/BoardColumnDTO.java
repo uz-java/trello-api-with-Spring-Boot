@@ -20,5 +20,5 @@ public class BoardColumnDTO {
     private String name;
     private Long order;
     private Long boardId;
-    private List<CardDTO> cardDTOS;
+    private List<CardDTO> cardSet;
 }
